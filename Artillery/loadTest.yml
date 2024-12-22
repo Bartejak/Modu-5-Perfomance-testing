@@ -1,0 +1,32 @@
+config:
+  target: 'https://api.openweathermap.org/data/2.5'  
+  phases:
+    - duration: 1  
+      arrivalRate: 1  
+  defaults:
+    headers:
+      Content-Type: application/json
+  processor: './processor.js'  
+
+scenarios:
+  - flow:
+      
+      - get:
+          url: '/weather'
+          qs:
+            q: 'London'  
+            appid: 'YOUR_API_KEY'  
+
+      
+      - post:
+          url: '/someEndpoint'  
+          json:
+            title: 'Weather Update'
+            description: 'Sending weather data test'
+            data: 'Test POST request data'
+          payload: './payload.json'  
+
+validations:
+    - response_time.p95 < 500  
+    - statusCode: 200  
+    - response_time.mean < 200  

@@ -1,0 +1,10 @@
+{
+    "title": "Test POST Request",
+    "description": "Test request to OpenWeatherMap endpoint",
+    "userData": {
+      "location": "London",
+      "temperature": "15",
+      "humidity": "75"
+    }
+  }
+  
